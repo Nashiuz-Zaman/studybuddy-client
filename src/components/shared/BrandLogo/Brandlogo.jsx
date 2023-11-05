@@ -8,7 +8,11 @@ const Brandlogo = ({ logo, modifyClasses = "" }) => {
   return (
     <div className={`w-max ${modifyClasses}`}>
       <Link className="block w-full h-full" to="/">
-        <img className="block h-[8rem]" src={logo} alt="Brand Logo" />
+        <img
+          className="block h-[3rem] 2xsm:h-[5rem]"
+          src={logo}
+          alt="Brand Logo"
+        />
       </Link>
     </div>
   );
