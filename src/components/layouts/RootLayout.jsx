@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function RootLayout() {
   return (
-    <div>
+    <div className="font-default">
       <Outlet />
     </div>
   );
