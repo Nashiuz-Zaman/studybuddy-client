@@ -9,7 +9,7 @@ import brandLogo from "./../../assets/website-logo/logo.webp";
 
 function RootLayout() {
   return (
-    <div className="font-default">
+    <div className="font-default text-textPrimary">
       <Header logo={brandLogo} />
       <Outlet />
     </div>
