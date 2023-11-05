@@ -4,3 +4,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2.5rem;
+}
+
+.active {
+  @apply border-x-2 border-white;
+}
