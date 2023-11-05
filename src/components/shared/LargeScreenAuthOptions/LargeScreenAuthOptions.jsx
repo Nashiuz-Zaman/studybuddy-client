@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 
 // shared components
 import UsernameWithImage from "./../UsernameWithImage/UsernameWithImage";
-
-// link classes
-const linkClasses = "text-primary hover:underline transition-all duration-300";
+import ButtonBtn from "../ButtonBtn/ButtonBtn";
 
 const LargeScreenAuthOptions = ({ authUser = null }) => {
+  // link classes
+  const linkClasses = "hover:underline";
+
   return (
     <div>
       {/* if not logged in show login and register */}
@@ -29,6 +30,7 @@ const LargeScreenAuthOptions = ({ authUser = null }) => {
       {authUser && (
         <div className="flex items-center gap-5">
           <UsernameWithImage user={authUser} justImage={true} />
+          <ButtonBtn text="Log Out" />
         </div>
       )}
     </div>
