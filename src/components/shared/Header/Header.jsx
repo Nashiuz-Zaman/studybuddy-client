@@ -16,10 +16,14 @@ import OuterContainer from "./../../containers/OuterContainer.jsx/OuterContainer
 
 // custom hooks
 import useMobileNavigation from "./../../../hooks/useMobileNavigation";
+import useAuthContext from "../../../hooks/useAuthContext";
 
 const Header = ({ logo = "" }) => {
   // extract mobile navigation functions and state
   const { mobileNavOpen, openNav, closeNav } = useMobileNavigation();
+
+  // take user data from auth context
+  const { user, appLoading } = useAuthContext();
 
   return (
     <header>
@@ -30,7 +34,7 @@ const Header = ({ logo = "" }) => {
 
           <div>
             {/* content here will change base on login/logout status */}
-            <LargeScreenAuthOptions />
+            {!appLoading && <LargeScreenAuthOptions authUser={user} />}
           </div>
         </div>
       </InnerContainer>
@@ -38,7 +42,7 @@ const Header = ({ logo = "" }) => {
       <div className="bg-gradient-to-r from-primary to-primaryLight py-elementGapSm">
         <OuterContainer>
           <InnerContainer>
-            <LargeScreenNav modifyClasses="hidden lg:flex" />
+            <LargeScreenNav authUser={user} modifyClasses="hidden lg:flex" />
             <MobileMenuBtn openNavFunction={openNav} modifyClasses="ml-auto" />
           </InnerContainer>
 
@@ -47,6 +51,7 @@ const Header = ({ logo = "" }) => {
             logo={logo}
             openState={mobileNavOpen}
             closeNavFunction={closeNav}
+            authUser={user}
           />
         </OuterContainer>
       </div>

@@ -5,12 +5,18 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // shared components
-import UsernameWithImage from "./../UsernameWithImage/UsernameWithImage";
+import UserProfile from "../UserProfile/UserProfile";
 import ButtonBtn from "../ButtonBtn/ButtonBtn";
+
+// custom hook
+import useAuthContext from "./../../../hooks/useAuthContext";
 
 const LargeScreenAuthOptions = ({ authUser = null }) => {
   // link classes
   const linkClasses = "hover:underline";
+
+  // take the log out function from login/registration provider custom hook
+  const { logout } = useAuthContext();
 
   return (
     <div>
@@ -29,8 +35,8 @@ const LargeScreenAuthOptions = ({ authUser = null }) => {
       {/* if logged in then show the profile picture and logout button */}
       {authUser && (
         <div className="flex items-center gap-5">
-          <UsernameWithImage user={authUser} justImage={true} />
-          <ButtonBtn text="Log Out" />
+          <UserProfile authUser={authUser} />
+          <ButtonBtn onClickFunction={logout} text="Log Out" />
         </div>
       )}
     </div>

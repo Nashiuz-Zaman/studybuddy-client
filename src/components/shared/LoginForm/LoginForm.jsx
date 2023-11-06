@@ -17,8 +17,8 @@ const LoginForm = () => {
     setLoginInfo,
     getEmail,
     getPassword,
-    handleSubmit,
-    handleGoogleSignIn,
+    handleLogin,
+    handleLoginGoogle,
     loginError,
   } = useLoginForm();
 
@@ -39,7 +39,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="w-full md:w-[20rem] mx-auto p-4">
+      <form onSubmit={handleLogin} className="w-full md:w-[20rem] mx-auto p-4">
         {/* email field */}
         <div className="mb-4">
           <label className={labelClasses} htmlFor="email">
@@ -85,7 +85,7 @@ const LoginForm = () => {
       </form>
 
       <GoogleLoginBtn
-        onClickFunction={handleGoogleSignIn}
+        onClickFunction={handleLoginGoogle}
         modifyClasses="w-max mx-auto"
       />
     </div>

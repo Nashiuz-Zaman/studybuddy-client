@@ -5,14 +5,15 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 // must import data here to make this component work
-// data
-import { navOptionsAlways } from "../../../nativeData/navigationOptions";
-import { navOptionsLoggedIn } from "../../../nativeData/navigationOptions";
+// import custom data hook
+import useNavData from "../../../hooks/useNavData";
 
-const LargeScreenNav = ({ user = null, modifyClasses = "" }) => {
+const LargeScreenNav = ({ authUser = null, modifyClasses = "" }) => {
   // link Classes =
   const linkClasses =
     "leading-[normal] px-2 border-x-2 border-transparent hover:border-white text-white transition-all duration-200";
+
+  const { navOptionsAlways, navOptionsLoggedIn } = useNavData();
 
   return (
     <nav className={`flex justify-center ${modifyClasses}`}>
@@ -30,7 +31,7 @@ const LargeScreenNav = ({ user = null, modifyClasses = "" }) => {
           })}
 
         {/* if user is logged-in this part will be visible */}
-        {user === null &&
+        {authUser !== null &&
           navOptionsLoggedIn &&
           navOptionsLoggedIn.map((option) => {
             return (
@@ -47,7 +48,7 @@ const LargeScreenNav = ({ user = null, modifyClasses = "" }) => {
 };
 
 LargeScreenNav.propTypes = {
-  user: PropTypes.object,
+  authUser: PropTypes.object,
   modifyClasses: PropTypes.string,
 };
 

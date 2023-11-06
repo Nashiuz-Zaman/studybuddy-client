@@ -30,7 +30,7 @@ const useLoginForm = () => {
   };
 
   // function for handling google sign in
-  const handleGoogleSignIn = () => {
+  const handleLoginGoogle = () => {
     loginGoogle()
       .then(() => {
         // if login successful then show success toast first and then set timer to navigate to the target page after a certain time
@@ -56,10 +56,10 @@ const useLoginForm = () => {
         }, 2100);
       })
       // handle error
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     setLoginError(null);
 
@@ -87,6 +87,7 @@ const useLoginForm = () => {
           clearTimeout(timer);
         }, 2100);
       })
+
       // handle error
       .catch((error) => {
         setLoginError("Email/Password doesn't match. Try again.");
@@ -100,9 +101,9 @@ const useLoginForm = () => {
     setLoginInfo,
     getEmail,
     getPassword,
-    handleSubmit,
+    handleLogin,
     loginError,
-    handleGoogleSignIn,
+    handleLoginGoogle,
   };
 };
 
