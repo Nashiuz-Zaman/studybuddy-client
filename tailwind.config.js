@@ -27,7 +27,7 @@ export default {
         default: "'Roboto', sans-serif",
       },
       borderRadius: {
-        default: "8px",
+        default: "5px",
       },
     },
   },

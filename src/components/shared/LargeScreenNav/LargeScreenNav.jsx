@@ -11,7 +11,7 @@ import useNavData from "../../../hooks/useNavData";
 const LargeScreenNav = ({ authUser = null, modifyClasses = "" }) => {
   // link Classes =
   const linkClasses =
-    "leading-[normal] px-2 border-x-2 border-transparent hover:border-white text-white transition-all duration-200";
+    "leading-[normal] rounded-default p-2 hover:bg-white hover:text-primary text-white transition-all duration-200";
 
   const { navOptionsAlways, navOptionsLoggedIn } = useNavData();
 

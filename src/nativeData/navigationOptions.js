@@ -1,6 +1,6 @@
 export const navOptionsAlways = [
   { id: 0, text: "Home", url: "/" },
-  { id: 1, text: "Assigments", url: "/assignments" },
+  { id: 1, text: "Assignments", url: "/assignments" },
 ];
 
 export const navOptionsLoggedIn = [

@@ -11,5 +11,5 @@ html {
 }
 
 .active {
-  @apply border-x-2 border-white;
+  @apply bg-white text-primary;
 }
