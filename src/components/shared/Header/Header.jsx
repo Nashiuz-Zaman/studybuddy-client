@@ -18,7 +18,7 @@ import OuterContainer from "./../../containers/OuterContainer.jsx/OuterContainer
 import useMobileNavigation from "./../../../hooks/useMobileNavigation";
 import useAuthContext from "../../../hooks/useAuthContext";
 
-const Header = ({ logo = "" }) => {
+const Header = ({ logo = "", modifyClasses = "" }) => {
   // extract mobile navigation functions and state
   const { mobileNavOpen, openNav, closeNav } = useMobileNavigation();
 
@@ -26,7 +26,7 @@ const Header = ({ logo = "" }) => {
   const { user, appLoading } = useAuthContext();
 
   return (
-    <header>
+    <header className={`${modifyClasses}`}>
       <InnerContainer>
         {/* brand logo and login/register, logout/user profile part */}
         <div className="flex flex-col gap-8 sm:flex-row items-center justify-between py-elementGapSm xsm:py-elementGapMd">
@@ -39,7 +39,7 @@ const Header = ({ logo = "" }) => {
         </div>
       </InnerContainer>
 
-      <div className="bg-gradient-to-r from-primary to-primaryLight py-elementGapSm">
+      <div className="bg-gradient-to-t from-primary to-primaryLight py-elementGapSm">
         <OuterContainer>
           <InnerContainer>
             <LargeScreenNav authUser={user} modifyClasses="hidden lg:flex" />
@@ -61,6 +61,7 @@ const Header = ({ logo = "" }) => {
 
 Header.propTypes = {
   logo: PropTypes.string.isRequired,
+  modifyClasses: PropTypes.string,
 };
 
 export default Header;

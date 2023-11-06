@@ -13,11 +13,13 @@ const Registration = () => {
   const { registrationInfo } = useRegistrationForm();
 
   return (
-    <section className="my-sectionGapSm">
-      <RegistrationSuccessToast show={registrationInfo.showSuccessToast} />
-      <SectionHeading modifyClasses="mb-4" text={"Register- It's free!"} />
-      <RegistrationForm />
-    </section>
+    <div>
+      <section className="mb-sectionGapSm">
+        <RegistrationSuccessToast show={registrationInfo.showSuccessToast} />
+        <SectionHeading modifyClasses="mb-4" text={"Register- It's free!"} />
+        <RegistrationForm />
+      </section>
+    </div>
   );
 };
 

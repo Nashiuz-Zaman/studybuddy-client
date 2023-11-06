@@ -12,11 +12,13 @@ const Login = () => {
   // extract loginInfo state from this hook so that we can pass the toast show/hide state in success toast component below
   const { loginInfo } = useLoginForm();
   return (
-    <section className="my-sectionGapSm">
-      <LoginSuccessToast show={loginInfo.showSuccessToast} />
-      <SectionHeading modifyClasses="mb-4" text={"Log In To Your Account"} />
-      <LoginForm />
-    </section>
+    <div>
+      <section className="mb-sectionGapSm">
+        <LoginSuccessToast show={loginInfo.showSuccessToast} />
+        <SectionHeading modifyClasses="mb-4" text={"Log In To Your Account"} />
+        <LoginForm />
+      </section>
+    </div>
   );
 };
 
