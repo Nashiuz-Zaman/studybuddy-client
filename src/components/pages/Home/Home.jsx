@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       {/* top banner section */}
-      <section>
+      <section className="mb-sectionGapSm">
         <Banner
           heading={
             <>
