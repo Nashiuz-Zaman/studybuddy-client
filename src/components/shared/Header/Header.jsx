@@ -12,7 +12,6 @@ import MobileNav from "../MobileNav/MobileNav";
 
 // container components
 import InnerContainer from "./../../containers/InnerContainer/InnerContainer";
-import OuterContainer from "./../../containers/OuterContainer.jsx/OuterContainer";
 
 // custom hooks
 import useMobileNavigation from "./../../../hooks/useMobileNavigation";
@@ -30,21 +29,19 @@ const Header = ({ logo = "", modifyClasses = "" }) => {
       <InnerContainer>
         {/* brand logo and login/register, logout/user profile part */}
         <div className="flex flex-col gap-8 sm:flex-row items-center justify-between py-elementGapSm xsm:py-elementGapMd">
+          {/* brand logo */}
           <Brandlogo logo={logo} />
 
-          <div>
-            {/* content here will change base on login/logout status */}
-            {!appLoading && <LargeScreenAuthOptions authUser={user} />}
-          </div>
+          {/* content here will change base on login/logout status */}
+          <div>{!appLoading && <LargeScreenAuthOptions authUser={user} />}</div>
         </div>
-      </InnerContainer>
 
-      <div className="bg-gradient-to-t from-primary to-primaryLight py-elementGapSm">
-        <OuterContainer>
-          <InnerContainer>
-            <LargeScreenNav authUser={user} modifyClasses="hidden lg:flex" />
-            <MobileMenuBtn openNavFunction={openNav} modifyClasses="ml-auto" />
-          </InnerContainer>
+        {/* desktop nav, hamburger button and mobile nav is here */}
+        <div className="bg-primary py-elementGapSm rounded-full">
+          {/* desktop navbar */}
+          <LargeScreenNav authUser={user} modifyClasses="hidden lg:flex" />
+          {/* mobile menu hamburger button */}
+          <MobileMenuBtn openNavFunction={openNav} modifyClasses="mx-auto" />
 
           {/* moble navigation menu - THE MENU WILL OPEN AND CLOSE according to the state extracted from the custom hook */}
           <MobileNav
@@ -53,8 +50,8 @@ const Header = ({ logo = "", modifyClasses = "" }) => {
             closeNavFunction={closeNav}
             authUser={user}
           />
-        </OuterContainer>
-      </div>
+        </div>
+      </InnerContainer>
     </header>
   );
 };

@@ -11,13 +11,13 @@ import useNavData from "../../../hooks/useNavData";
 const LargeScreenNav = ({ authUser = null, modifyClasses = "" }) => {
   // link Classes =
   const linkClasses =
-    "leading-[normal] rounded-default p-2 hover:bg-white hover:text-primary text-white transition-all duration-200";
+    "block leading-[normal] rounded-default p-2 text-white transition-all duration-200 hover:bg-white hover:text-primary";
 
   const { navOptionsAlways, navOptionsLoggedIn } = useNavData();
 
   return (
     <nav className={`flex justify-center ${modifyClasses}`}>
-      <ul className="flex gap-2">
+      <ul className="flex gap-3 items-center">
         {/* these links will always be here */}
         {navOptionsAlways &&
           navOptionsAlways.map((option) => {
