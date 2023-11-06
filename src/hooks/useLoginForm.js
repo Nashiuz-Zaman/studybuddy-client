@@ -29,7 +29,7 @@ const useLoginForm = () => {
     setLoginInfo({ ...loginInfo, password: e.target.value });
   };
 
-  // function for handling google sign in
+  // handle google sign in
   const handleLoginGoogle = () => {
     loginGoogle()
       .then(() => {
@@ -56,9 +56,14 @@ const useLoginForm = () => {
         }, 2100);
       })
       // handle error
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setLoginError(error.message);
+        setAppLoading(false);
+      });
   };
 
+  // handle normal login
   const handleLogin = (e) => {
     e.preventDefault();
     setLoginError(null);

@@ -92,7 +92,6 @@ const useRegistrationForm = () => {
                 setRegistrationInfo((prev) => {
                   return { ...prev, showSuccessToast: true };
                 });
-
                 // set the timer and clear the timer
                 const timer = setTimeout(() => {
                   setRegistrationInfo((prev) => {
