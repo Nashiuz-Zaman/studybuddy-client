@@ -15,6 +15,10 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 
+// custom hook
+import useControlCookie from "../hooks/useControlCookie";
+
+// create auth context
 export const AuthContext = createContext();
 
 // create auth instance
@@ -29,6 +33,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   // app loading state
   const [appLoading, setAppLoading] = useState(true);
+
+  const { deleteCookie } = useControlCookie();
 
   // login with google function
   const loginGoogle = () => {
@@ -59,6 +65,7 @@ const AuthProvider = ({ children }) => {
   // user logout function
   const logout = () => {
     setAppLoading(true);
+    deleteCookie();
     return signOut(auth);
   };
 
