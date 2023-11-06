@@ -29,7 +29,7 @@ const Header = ({ logo = "" }) => {
     <header>
       <InnerContainer>
         {/* brand logo and login/register, logout/user profile part */}
-        <div className="flex flex-col gap-8 sm:flex-row items-center justify-between py-elementGapMd">
+        <div className="flex flex-col gap-8 sm:flex-row items-center justify-between py-elementGapSm xsm:py-elementGapMd">
           <Brandlogo logo={logo} />
 
           <div>
