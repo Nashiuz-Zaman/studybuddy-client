@@ -5,13 +5,17 @@ import { useLocation } from "react-router-dom";
 // custom hook
 import useAuthContext from "./useAuthContext";
 import useLoginRegistrationProvider from "./useLoginRegistrationProvider";
+import useControlCookie from "./useControlCookie";
 
 const useLoginForm = () => {
   // extract functions from auth context
   const { login, setAppLoading, loginGoogle } = useAuthContext();
 
+  // extract different login and registration related states this hook
   const { loginInfo, setLoginInfo, loginError, setLoginError } =
     useLoginRegistrationProvider();
+
+  const { createCookie } = useControlCookie();
 
   // create the navigation function
   const navigate = useNavigate();
@@ -32,7 +36,13 @@ const useLoginForm = () => {
   // handle google sign in
   const handleLoginGoogle = () => {
     loginGoogle()
-      .then(() => {
+      .then((result) => {
+        // get user email from result
+        const email = result.user.email;
+
+        // if login is successful send post request to jwt api to create jwt token
+        createCookie(email);
+
         // if login successful then show success toast first and then set timer to navigate to the target page after a certain time
         setLoginInfo((prev) => {
           return { ...prev, showSuccessToast: true };
@@ -70,6 +80,9 @@ const useLoginForm = () => {
 
     login(loginInfo.email, loginInfo.password)
       .then(() => {
+        // if login is successful send post request to backend's jwt api to create a jwt token
+        createCookie(loginInfo.email);
+
         // if login successful then show success toast first and then set timer to navigate to the target page after a certain time
         setLoginInfo((prev) => {
           return { ...prev, showSuccessToast: true };
