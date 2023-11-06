@@ -10,7 +10,7 @@ import brandLogo from "./../../assets/website-logo/logo.webp";
 function RootLayout() {
   return (
     <div className="font-default text-textPrimary">
-      <Header logo={brandLogo} />
+      <Header logo={brandLogo} modifyClasses="mb-sectionGapSm" />
       <Outlet />
     </div>
   );
