@@ -9,7 +9,6 @@ const UserProfile = ({ authUser }) => {
   // hover state
   const [hovered, setHovered] = useState(false);
 
-  console.log(hovered);
   const handleHoverEnter = () => {
     setHovered(true);
   };
