@@ -9,7 +9,3 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 2.5rem;
 }
-
-.active {
-  @apply bg-white text-primary;
-}
