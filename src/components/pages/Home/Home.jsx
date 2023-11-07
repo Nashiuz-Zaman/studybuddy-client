@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       {/* top banner section */}
-      <section className="mb-sectionGapMd">
+      <section className="mb-sectionGapSm md:mb-sectionGapMd">
         <InnerContainer>
           <Banner
             heading={
@@ -30,14 +30,14 @@ const Home = () => {
       </section>
 
       {/* feature section */}
-      <section id="features" className="mb-sectionGapMd">
+      <section id="features" className="mb-sectionGapSm md:mb-sectionGapMd">
         <InnerContainer>
           <Features features={features} />
         </InnerContainer>
       </section>
 
       {/* faq section */}
-      <section id="features" className="mb-sectionGapMd">
+      <section id="faqs" className="mb-sectionGapSm md:mb-sectionGapMd">
         <InnerContainer>
           <FrequentQuestions faqInfo={frequentQuestions} />
         </InnerContainer>
