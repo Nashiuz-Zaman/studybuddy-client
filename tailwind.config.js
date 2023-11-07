@@ -6,7 +6,8 @@ export default {
       screens: {
         "2xsm": "360px",
         xsm: "480px",
-        ltab: "850px",
+        "2md": "850px",
+        "3xl": "1700px",
       },
       spacing: {
         sectionGapLg: "11rem",
@@ -21,7 +22,7 @@ export default {
         textPrimary: "#1C1B1B",
         textMediumLight: "#1c1b1bcc",
         textLight: "#1c1b1b99",
-        lightGray: "#eee",
+        lightGray: "#f5f5f5",
       },
       fontFamily: {
         default: "'Roboto', sans-serif",
