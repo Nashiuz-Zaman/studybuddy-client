@@ -6,9 +6,9 @@ const Feature = ({ feature }) => {
 
   return (
     <div>
-      <h3 className="text-2xl text-center font-bold text-primary mb-6">
+      <p className="text-2xl text-center font-bold text-primary mb-6">
         {title}
-      </h3>
+      </p>
       <div className="w-[13rem] md:w-[50%] mx-auto mb-6">
         <img className="w-full" src={imageSource} alt={title} />
       </div>
