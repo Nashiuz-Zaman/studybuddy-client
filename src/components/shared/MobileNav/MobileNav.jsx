@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 // react router
 import { NavLink } from "react-router-dom";
 
+// react hashed link
+import { HashLink } from "react-router-hash-link";
+
 // shared components
 import MobileMenuCloseBtn from "../MobileMenuCloseBtn/MobileMenuCloseBtn";
 import Brandlogo from "../Brandlogo/Brandlogo";
@@ -49,6 +52,20 @@ const MobileNav = ({
         {/* this part will be always shown */}
         {navOptionsAlways &&
           navOptionsAlways.map((option) => {
+            // if hashed link present then return this part, if not then return the next part
+
+            // hashed link
+            if (option.hashed) {
+              return (
+                <li key={option.id} onClick={closeNavFunction}>
+                  <HashLink className={linkClasses} to={option.url}>
+                    {option.text}
+                  </HashLink>
+                </li>
+              );
+            }
+
+            // normal link
             return (
               <li key={option.id} onClick={closeNavFunction}>
                 <NavLink className={linkClasses} to={option.url}>
@@ -62,6 +79,20 @@ const MobileNav = ({
         {authUser &&
           navOptionsLoggedIn &&
           navOptionsLoggedIn.map((option) => {
+            // if hashed link present then return this part, if not then return the next part
+
+            // hashed link
+            if (option.hashed) {
+              return (
+                <li key={option.id} onClick={closeNavFunction}>
+                  <HashLink className={linkClasses} to={option.url}>
+                    {option.text}
+                  </HashLink>
+                </li>
+              );
+            }
+
+            // normal link
             return (
               <li key={option.id} onClick={closeNavFunction}>
                 <NavLink className={linkClasses} to={option.url}>

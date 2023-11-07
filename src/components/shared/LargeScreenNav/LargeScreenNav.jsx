@@ -1,8 +1,11 @@
 // react
 import PropTypes from "prop-types";
 
-// components
+// react router
 import { NavLink } from "react-router-dom";
+
+// react hashlink
+import { HashLink } from "react-router-hash-link";
 
 // must import data here to make this component work
 // import custom data hook
@@ -21,6 +24,20 @@ const LargeScreenNav = ({ authUser = null, modifyClasses = "" }) => {
         {/* these links will always be here */}
         {navOptionsAlways &&
           navOptionsAlways.map((option) => {
+            // if hashed link present then return this part, if not then return the next part
+
+            // hashed link
+            if (option.hashed) {
+              return (
+                <li key={option.id}>
+                  <HashLink className={linkClasses} to={option.url}>
+                    {option.text}
+                  </HashLink>
+                </li>
+              );
+            }
+
+            // normal link
             return (
               <li key={option.id}>
                 <NavLink className={linkClasses} to={option.url}>
@@ -34,6 +51,20 @@ const LargeScreenNav = ({ authUser = null, modifyClasses = "" }) => {
         {authUser !== null &&
           navOptionsLoggedIn &&
           navOptionsLoggedIn.map((option) => {
+            // if hashed link present then return this part, if not then return the next part
+
+            // hashed link
+            if (option.hashed) {
+              return (
+                <li key={option.id}>
+                  <HashLink className={linkClasses} to={option.url}>
+                    {option.text}
+                  </HashLink>
+                </li>
+              );
+            }
+
+            // normal link
             return (
               <li key={option.id}>
                 <NavLink className={linkClasses} to={option.url}>
