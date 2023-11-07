@@ -1,7 +1,7 @@
 // react
 import PropTypes from "prop-types";
 
-// components
+// react icon
 import { AiOutlineClose } from "react-icons/ai";
 
 const MobileMenuCloseBtn = ({ clickHandler }) => {
