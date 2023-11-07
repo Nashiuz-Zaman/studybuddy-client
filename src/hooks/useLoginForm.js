@@ -11,10 +11,10 @@ const useLoginForm = () => {
   // extract functions from auth context
   const { login, setAppLoading, loginGoogle } = useAuthContext();
 
-  // extract different login and registration related states this hook
-  const { loginInfo, setLoginInfo, loginError, setLoginError } =
-    useLoginRegistrationProvider();
+  // extract different login and registration related states from this hook
+  const { loginInfo, setLoginInfo } = useLoginRegistrationProvider();
 
+  // take the create cookie function from the hook
   const { createCookie } = useControlCookie();
 
   // create the navigation function
@@ -68,7 +68,10 @@ const useLoginForm = () => {
       // handle error
       .catch((error) => {
         console.error(error);
-        setLoginError(error.message);
+        setLoginInfo((prev) => {
+          return { ...prev, error: error.message };
+        });
+
         setAppLoading(false);
       });
   };
@@ -76,7 +79,9 @@ const useLoginForm = () => {
   // handle normal login
   const handleLogin = (e) => {
     e.preventDefault();
-    setLoginError(null);
+    setLoginInfo((prev) => {
+      return { ...prev, loginError: "" };
+    });
 
     login(loginInfo.email, loginInfo.password)
       .then(() => {
@@ -108,7 +113,13 @@ const useLoginForm = () => {
 
       // handle error
       .catch((error) => {
-        setLoginError("Email/Password doesn't match. Try again.");
+        setLoginInfo((prev) => {
+          return {
+            ...prev,
+            error: "Email/Password doesn't match. Try again.",
+          };
+        });
+
         console.error(error.message);
         setAppLoading(false);
       });
@@ -120,7 +131,6 @@ const useLoginForm = () => {
     getEmail,
     getPassword,
     handleLogin,
-    loginError,
     handleLoginGoogle,
   };
 };

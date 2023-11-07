@@ -6,11 +6,10 @@ import { createContext, useState } from "react";
 export const LoginRegistrationContext = createContext();
 
 const LoginRegistratonProvider = ({ children }) => {
-  // registration STATES
   // set to true when the submit button has been clicked to show errors only when the submission has happened
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // states of the form input boxes and error
+  // registration states
   const [registrationInfo, setRegistrationInfo] = useState({
     email: "",
     password: "",
@@ -21,15 +20,12 @@ const LoginRegistratonProvider = ({ children }) => {
   });
 
   // login STATES
-  // states of the form input boxes
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
     showSuccessToast: false,
+    error: "",
   });
-
-  // error state
-  const [loginError, setLoginError] = useState("");
 
   const valueObj = {
     registrationInfo,
@@ -38,8 +34,6 @@ const LoginRegistratonProvider = ({ children }) => {
     formSubmitted,
     loginInfo,
     setLoginInfo,
-    loginError,
-    setLoginError,
   };
 
   return (

@@ -19,7 +19,6 @@ const LoginForm = () => {
     getPassword,
     handleLogin,
     handleLoginGoogle,
-    loginError,
   } = useLoginForm();
 
   useEffect(() => {
@@ -28,6 +27,7 @@ const LoginForm = () => {
         email: "",
         password: "",
         showSuccessToast: false,
+        error: "",
       });
     };
   }, [setLoginInfo]);
@@ -71,8 +71,10 @@ const LoginForm = () => {
             required
           />
         </div>
-        {loginError !== null && (
-          <p className="mt-4 text-red-600 text-center">{loginError}</p>
+
+        {/* show login errors here */}
+        {loginInfo.error && (
+          <p className="mt-4 text-red-600 text-center">{loginInfo.error}</p>
         )}
 
         <ButtonBtn text="Log In" modifyClasses="w-full block mt-10 mb-4" />
