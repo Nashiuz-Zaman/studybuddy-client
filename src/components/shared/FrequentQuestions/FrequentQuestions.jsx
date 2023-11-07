@@ -25,7 +25,7 @@ const FrequentQuestions = ({ faqInfo }) => {
                 <h4 className="text-xl text-primary font-bold mb-2">
                   {question}
                 </h4>
-                <p>{answer}</p>
+                <p className="!leading-[1.5]">{answer}</p>
               </div>
             );
           })}
