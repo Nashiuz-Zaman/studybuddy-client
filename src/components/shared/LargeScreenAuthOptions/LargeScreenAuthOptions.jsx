@@ -36,7 +36,11 @@ const LargeScreenAuthOptions = ({ authUser = null }) => {
       {authUser && (
         <div className="flex items-center gap-5">
           <UserProfile authUser={authUser} />
-          <ButtonBtn onClickFunction={logout} text="Log Out" />
+          <ButtonBtn
+            outlinedPrimary={true}
+            onClickFunction={logout}
+            text="Log Out"
+          />
         </div>
       )}
     </div>

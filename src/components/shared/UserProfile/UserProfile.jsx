@@ -33,9 +33,12 @@ const UserProfile = ({ authUser }) => {
       >
         {/* profile image container div */}
         <div className="w-full h-full aspect-square border border-[#ddd]  rounded-default overflow-hidden">
+          {/* if no photo provided show default silhoutte photo */}
           {!photoURL && (
             <FaUserCircle className="w-full h-full object-contain text-white"></FaUserCircle>
           )}
+
+          {/* if there is photo show this part */}
           {photoURL !== null && (
             <img
               className="w-full h-full object-cover"
