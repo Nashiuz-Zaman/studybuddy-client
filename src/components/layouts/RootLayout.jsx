@@ -14,7 +14,7 @@ import Footer from "../shared/Footer/Footer";
 
 function RootLayout() {
   return (
-    <div className="font-default text-textPrimary">
+    <div className="font-default text-textPrimary min-h-screen flex flex-col">
       <Header logo={brandLogo} modifyClasses="mb-sectionGapSm" />
 
       {/* modals and toasts that should be visible on every page, thus placed here */}
@@ -24,7 +24,9 @@ function RootLayout() {
 
       {/* page component will replace outlet */}
       <Outlet />
+
       <Footer logo={brandLogoWhite} />
+      {/* <div className="mt-auto">abcd</div> */}
     </div>
   );
 }

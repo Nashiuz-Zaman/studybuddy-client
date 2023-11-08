@@ -71,7 +71,7 @@ const Footer = ({ logo = "" }) => {
         </ul>
 
         <p className="text-white text-center">
-          <small>&copy; {year} Brando, by Nashiuz Zaman</small>
+          <small>&copy; {year} StudyBuddy, by Nashiuz Zaman</small>
         </p>
       </InnerContainer>
     </footer>
