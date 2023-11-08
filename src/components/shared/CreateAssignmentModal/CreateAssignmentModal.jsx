@@ -26,8 +26,9 @@ import { apiBaseURL } from "../../../nativeData/apiBase";
 
 const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
   // form element css classes
-  const labelClasses = "block text-white mb-2 text-lg";
-  const inputClasses = "block rounded-default !w-full p-2 font-inherit";
+  const labelClasses = "block mb-2 text-lg";
+  const inputClasses =
+    "block rounded-default !w-full p-2 font-inherit bg-gray-300";
 
   // navigate method
   const navigate = useNavigate();
@@ -108,18 +109,15 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
     <div
       className={`${
         open ? "scale-100" : "scale-0"
-      } origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 bg-gradient-to-t from-primary to-primaryLight z-40 rounded-default max-w-[50%] w-full duration-200`}
+      } origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 bg-white z-40 rounded-default max-w-[50%] w-full duration-200`}
     >
       {/* close button */}
       <button className="block w-max ml-auto" onClick={closeFunction}>
-        <AiOutlineClose className="text-white text-2xl mb-4" />
+        <AiOutlineClose className="text-2xl mb-4" />
       </button>
 
       {/*  heading */}
-      <SectionHeading
-        text={"Create Assignment"}
-        modifyClasses="text-white mb-4"
-      />
+      <SectionHeading text={"Create Assignment"} modifyClasses="mb-4" />
 
       {/* form starts here */}
       <form onSubmit={handleCreateAssignment} className="block space-y-4">
@@ -170,7 +168,7 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
           <div>
             <label className={labelClasses}>Difficulty</label>
             <select
-              className={`block w-full rounded-default p-[10px]`}
+              className={`block w-full rounded-default p-[10px] bg-gray-300`}
               name="difficulty"
             >
               <option value="easy">Easy</option>
@@ -193,11 +191,7 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
         </div>
 
         {/* submit button */}
-        <ButtonBtn
-          outlined={true}
-          text="Create Assingment"
-          modifyClasses="mx-auto !mt-10"
-        />
+        <ButtonBtn text="Create Assingment" modifyClasses="mx-auto !mt-10" />
       </form>
     </div>
   );
