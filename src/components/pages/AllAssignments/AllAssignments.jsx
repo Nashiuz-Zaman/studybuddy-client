@@ -76,7 +76,7 @@ const AllAssignments = () => {
 
           {/* if assignment found */}
           {assignments.length > 0 && (
-            <ul className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 2md:grid-cols-3 xl:grid-cols-4 gap-8">
               {assignments.map((assignment) => {
                 return (
                   <li key={assignment._id}>

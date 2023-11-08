@@ -7,10 +7,11 @@ import AssignmentDeleteBtn from "../AssignmentDeleteBtn/AssignmentDeleteBtn";
 import LinkBtn from "./../LinkBtn/LinkBtn";
 
 const AssignmentCard = ({ assignment }) => {
+  // extract assignment properties
   const { _id, thumbnail, title, totalMarks, difficulty } = assignment;
 
   return (
-    <div className="flex flex-col bg-white shadow-[0_0_20px_rgba(0,0,0,0.2)] p-4 pb-6  rounded-default">
+    <div className="bg-white h-full flex flex-col shadow-[0_0_20px_rgba(0,0,0,0.2)] p-4 pb-6 rounded-default">
       {/* thumbnail image */}
       <img
         className="block aspect-[16/11] w-full object-cover mb-4"

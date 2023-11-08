@@ -7,14 +7,12 @@ import RegistrationSuccessToast from "../../shared/RegistratonSuccessToast/Regis
 import useRegistrationForm from "../../../hooks/useRegistrationForm";
 
 const Registration = () => {
-  // extract theme info
-
   // extract the state so that we can pass the success toast show/hide state to the toast component
   const { registrationInfo } = useRegistrationForm();
 
   return (
-    <div>
-      <section className="mb-sectionGapSm">
+    <div className="mb-sectionGapLg">
+      <section>
         <RegistrationSuccessToast show={registrationInfo.showSuccessToast} />
         <SectionHeading modifyClasses="mb-4" text={"Register- It's free!"} />
         <RegistrationForm />
