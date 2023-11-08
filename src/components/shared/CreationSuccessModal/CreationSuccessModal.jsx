@@ -3,12 +3,12 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 
 // shared components
-import Overlay from "./../Overlay/Overlay";
+import Overlay from "../Overlay/Overlay";
 
 // custom hook
-import useAssignmentStatusProvider from "./../../../hooks/useAssignmentStatusProvider";
+import useAssignmentStatusProvider from "../../../hooks/useAssignmentStatusProvider";
 
-const AssignmentCreationSuccessModal = () => {
+const CreationSuccessModal = () => {
   // state
   const { assignmentCreationSuccessful, setAssignmentCreationSuccessful } =
     useAssignmentStatusProvider();
@@ -49,4 +49,4 @@ const AssignmentCreationSuccessModal = () => {
   );
 };
 
-export default AssignmentCreationSuccessModal;
+export default CreationSuccessModal;

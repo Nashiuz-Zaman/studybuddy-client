@@ -16,6 +16,9 @@ import UpdateAssignment from "../components/pages/UpdateAssignment/UpdateAssignm
 // route component
 import PrivateRoute from "../components/route/PrivateRoute/PrivateRoute";
 
+// data
+import { apiBaseURL } from "../nativeData/apiBase";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,12 +30,15 @@ const router = createBrowserRouter([
       { path: "/register", element: <Registration /> },
       { path: "/assignments", element: <AllAssignments /> },
       {
-        path: "/update-assignment/:id",
+        path: "/assignments/:id/update",
         element: (
           <PrivateRoute>
             <UpdateAssignment />
           </PrivateRoute>
         ),
+        loader: ({ params }) => {
+          return fetch(`${apiBaseURL}/assignments/${params.id}`);
+        },
       },
       {
         path: "/create-assignments",

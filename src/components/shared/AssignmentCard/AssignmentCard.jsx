@@ -82,7 +82,7 @@ const AssignmentCard = ({ assignment }) => {
 
       // if server gives permission take the user to the update assignment page
       if (data.canProceed === true) {
-        navigate(`/update-assignment/${_id}`);
+        navigate(`/assignments/${_id}/update`);
       }
     });
   };

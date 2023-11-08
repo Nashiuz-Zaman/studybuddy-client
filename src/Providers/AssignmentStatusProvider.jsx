@@ -6,12 +6,18 @@ import { createContext, useState } from "react";
 export const AssignmentStatusContext = createContext();
 
 const AssignmentStatusProvider = ({ children }) => {
+  // creation  state
   const [assignmentCreationSuccessful, setAssignmentCreationSuccessful] =
     useState(false);
+
+  // update state
+  const [updateSuccessful, setUpdateSuccessful] = useState(false);
 
   const assignmentStatusObj = {
     assignmentCreationSuccessful,
     setAssignmentCreationSuccessful,
+    updateSuccessful,
+    setUpdateSuccessful,
   };
 
   return (
