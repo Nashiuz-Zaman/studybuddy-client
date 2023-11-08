@@ -7,7 +7,6 @@ import InnerContainer from "./../../containers/InnerContainer/InnerContainer";
 // shared components
 import SectionHeading from "./../../shared/SectionHeading/SectionHeading";
 import CreateAssignmentBtn from "../../shared/CreateAssignmentBtn/CreateAssignmentBtn";
-import Overlay from "../../shared/Overlay/Overlay";
 import CreateAssignmentModal from "../../shared/CreateAssignmentModal/CreateAssignmentModal";
 
 const CreateAssignment = () => {
@@ -43,13 +42,6 @@ const CreateAssignment = () => {
 
   return (
     <div>
-      {/* blur overlay in the page */}
-      <Overlay
-        open={formOpen}
-        onClickFunction={closeForm}
-        modifyClasses="delay-200"
-      />
-
       <InnerContainer>
         <section>
           {/* section heading and details */}

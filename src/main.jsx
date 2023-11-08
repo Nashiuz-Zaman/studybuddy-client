@@ -12,6 +12,7 @@ import router from "./router/router";
 import AuthProvider from "./Providers/AuthProvider";
 import LoginRegistratonProvider from "./Providers/LoginRegistrationProvider";
 import LogoutProvider from "./Providers/LogoutProvider";
+import AssignmentStatusProvider from "./Providers/AssignmentStatusProvider";
 
 // style import
 import "./index.css";
@@ -21,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <LoginRegistratonProvider>
         <LogoutProvider>
-          <RouterProvider router={router}></RouterProvider>
+          <AssignmentStatusProvider>
+            <RouterProvider router={router}></RouterProvider>
+          </AssignmentStatusProvider>
         </LogoutProvider>
       </LoginRegistratonProvider>
     </AuthProvider>
