@@ -8,6 +8,8 @@ import AssignmentCreationSuccessModal from "../shared/AssignmentCreationSuccessM
 
 // data
 import brandLogo from "./../../assets/website-logo/logo.webp";
+import brandLogoWhite from "./../../assets/website-logo/logo-white.webp";
+import Footer from "../shared/Footer/Footer";
 
 function RootLayout() {
   return (
@@ -20,6 +22,7 @@ function RootLayout() {
 
       {/* page component will replace outlet */}
       <Outlet />
+      <Footer logo={brandLogoWhite} />
     </div>
   );
 }
