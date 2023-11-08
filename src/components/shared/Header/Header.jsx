@@ -15,14 +15,14 @@ import InnerContainer from "./../../containers/InnerContainer/InnerContainer";
 
 // custom hooks
 import useMobileNavigation from "./../../../hooks/useMobileNavigation";
-import useAuthContext from "../../../hooks/useAuthContext";
+import useAuthProvider from "../../../hooks/useAuthProvider";
 
 const Header = ({ logo = "", modifyClasses = "" }) => {
   // extract mobile navigation functions and state
   const { mobileNavOpen, openNav, closeNav } = useMobileNavigation();
 
   // take user data from auth context
-  const { user, appLoading } = useAuthContext();
+  const { user, appLoading } = useAuthProvider();
 
   return (
     <header className={`${modifyClasses}`}>

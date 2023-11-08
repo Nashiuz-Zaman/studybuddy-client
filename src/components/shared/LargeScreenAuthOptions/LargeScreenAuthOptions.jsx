@@ -9,14 +9,14 @@ import UserProfile from "../UserProfile/UserProfile";
 import ButtonBtn from "../ButtonBtn/ButtonBtn";
 
 // custom hook
-import useAuthContext from "./../../../hooks/useAuthContext";
+import useAuthProvider from "./../../../hooks/useAuthProvider";
 
 const LargeScreenAuthOptions = ({ authUser = null }) => {
   // link classes
   const linkClasses = "hover:underline";
 
   // take the log out function from login/registration provider custom hook
-  const { logout } = useAuthContext();
+  const { logout } = useAuthProvider();
 
   return (
     <div>

@@ -4,14 +4,14 @@ import { useContext } from "react";
 // auth context
 import { AuthContext } from "../Providers/AuthProvider";
 
-const useAuthContext = () => {
-  const authContextValue = useContext(AuthContext);
+const useAuthProvider = () => {
+  const contextValue = useContext(AuthContext);
 
-  if (!authContextValue) {
+  if (!contextValue) {
     throw new Error("Provider hasn't wrapped the app");
   } else {
-    return authContextValue;
+    return contextValue;
   }
 };
 
-export default useAuthContext;
+export default useAuthProvider;

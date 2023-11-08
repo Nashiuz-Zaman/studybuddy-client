@@ -2,13 +2,14 @@
 import { useNavigate } from "react-router-dom";
 
 // custom hooks import
-import useAuthContext from "./useAuthContext";
+import useAuthProvider from "./useAuthProvider";
 import useLoginRegistrationProvider from "./useLoginRegistrationProvider";
 
 // custom hook body starts here
 const useRegistrationForm = () => {
   // extract functions from auth context
-  const { signup, updateUserProfile, setAppLoading, logout } = useAuthContext();
+  const { signup, updateUserProfile, setAppLoading, logout } =
+    useAuthProvider();
 
   // extract functions from login and registration context
   const {

@@ -6,11 +6,11 @@ import { Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 // custom hooks
-import useAuthContext from "../../../hooks/useAuthContext";
+import useAuthProvider from "../../../hooks/useAuthProvider";
 
 const PrivateRoute = ({ children }) => {
   // extract the user state from context
-  const { user, appLoading } = useAuthContext();
+  const { user, appLoading } = useAuthProvider();
 
   // find out which route the user was originally going to
   const { pathname } = useLocation();

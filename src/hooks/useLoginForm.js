@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 // custom hook
-import useAuthContext from "./useAuthContext";
+import useAuthProvider from "./useAuthProvider";
 import useLoginRegistrationProvider from "./useLoginRegistrationProvider";
 import useControlCookie from "./useControlCookie";
 
 const useLoginForm = () => {
   // extract functions from auth context
-  const { login, setAppLoading, loginGoogle } = useAuthContext();
+  const { login, setAppLoading, loginGoogle } = useAuthProvider();
 
   // extract different login and registration related states from this hook
   const { loginInfo, setLoginInfo } = useLoginRegistrationProvider();

@@ -18,7 +18,7 @@ import ButtonBtn from "./../ButtonBtn/ButtonBtn";
 import Overlay from "../Overlay/Overlay";
 
 // custom hooks
-import useAuthContext from "./../../../hooks/useAuthContext";
+import useAuthProvider from "../../../hooks/useAuthProvider";
 import useFetch from "./../../../hooks/useFetch";
 import useLogoutProvider from "../../../hooks/useLogoutProvider";
 import useAssignmentStatusProvider from "../../../hooks/useAssignmentStatusProvider";
@@ -48,7 +48,7 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
   const [startDate, setStartDate] = useState(new Date());
 
   // take the user's email from auth
-  const { user, logout } = useAuthContext();
+  const { user, logout } = useAuthProvider();
 
   // all form values come from their inputs but date comes from the state
   const handleCreateAssignment = (e) => {
