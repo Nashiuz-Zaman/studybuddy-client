@@ -41,15 +41,15 @@ const CreateAssignment = () => {
   };
 
   return (
-    <div>
+    <div className="mb-sectionGapLg">
       <InnerContainer>
         <section>
           {/* section heading and details */}
           <SectionHeading
             text={"Welcome"}
-            modifyClasses="md:text-3xl lg:text-4xl mb-6"
+            modifyClasses="md:text-3xl lg:text-4xl mb-4 md:mb-6"
           />
-          <p className="text-center text-lg sm:text-xl lg:text-2xl mb-10">
+          <p className="text-center text-base sm:text-xl lg:text-2xl mb-6 md:mb-10">
             You can create your assignments here.
           </p>
 
@@ -61,6 +61,7 @@ const CreateAssignment = () => {
           />
         </section>
 
+        {/* modal for form */}
         <section>
           <CreateAssignmentModal open={formOpen} closeFunction={closeForm} />
         </section>

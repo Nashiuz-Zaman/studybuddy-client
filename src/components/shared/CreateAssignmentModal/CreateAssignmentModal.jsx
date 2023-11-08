@@ -78,7 +78,7 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
     };
 
     // url to send the create (post) request to create assignments
-    const url = `${apiBaseURL}/assignments`;
+    const url = `${apiBaseURL}/assignments/create`;
 
     postData(url, assignmentData)
       .then((data) => {
@@ -102,8 +102,6 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
             return;
           });
         }
-
-        console.log(data);
 
         // if data entry successful
         if (data.insertedId) {
