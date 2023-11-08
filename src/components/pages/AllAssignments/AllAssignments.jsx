@@ -16,16 +16,18 @@ import { apiBaseURL } from "../../../nativeData/apiBase";
 
 const AllAssignments = () => {
   const [assignments, setAssignments] = useState([]);
+  //  assignment difficulty step
   const [difficulty, setDifficulty] = useState("all");
+  // take the post method from this hook
   const { postData } = useFetch();
-  console.log(difficulty);
 
   useEffect(() => {
     const url = `${apiBaseURL}/assignments`;
+    // create the filter for the database query here in client side
     const filter = { difficulty };
 
+    // retreive data based on difficulty
     postData(url, filter).then((data) => {
-      console.log(data);
       setAssignments(data);
     });
   }, [difficulty, postData]);

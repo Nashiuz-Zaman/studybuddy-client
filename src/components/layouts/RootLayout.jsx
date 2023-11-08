@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../shared/Header/Header";
 import LogoutToast from "../shared/LogoutToast/LogoutToast";
 import AssignmentCreationSuccessModal from "../shared/AssignmentCreationSuccessModal/AssignmentCreationSuccessModal";
+import UpdateDeleteDeniedModal from "../shared/UpdateDeleteDeniedModal/UpdateDeleteDeniedModal";
 
 // data
 import brandLogo from "./../../assets/website-logo/logo.webp";
@@ -19,6 +20,7 @@ function RootLayout() {
       {/* modals and toasts that should be visible on every page, thus placed here */}
       <LogoutToast />
       <AssignmentCreationSuccessModal />
+      <UpdateDeleteDeniedModal />
 
       {/* page component will replace outlet */}
       <Outlet />

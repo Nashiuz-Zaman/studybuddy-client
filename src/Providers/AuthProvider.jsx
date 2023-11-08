@@ -91,7 +91,11 @@ const AuthProvider = ({ children }) => {
 
   // check if user should be logged in by verifying the token
   const checkIfUserIsLoggedIn = () => {
-    console.log(user);
+    if (!user) {
+      return false;
+    }
+
+    return true;
   };
 
   // pass all the necessary things to the context provider through an object

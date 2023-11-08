@@ -13,6 +13,7 @@ import AuthProvider from "./Providers/AuthProvider";
 import LoginRegistratonProvider from "./Providers/LoginRegistrationProvider";
 import LogoutProvider from "./Providers/LogoutProvider";
 import AssignmentStatusProvider from "./Providers/AssignmentStatusProvider";
+import UpdateDeleteValidityProvider from "./Providers/UpdateDeleteValidityProvider";
 
 // style import
 import "./index.css";
@@ -23,7 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <LoginRegistratonProvider>
         <LogoutProvider>
           <AssignmentStatusProvider>
-            <RouterProvider router={router}></RouterProvider>
+            <UpdateDeleteValidityProvider>
+              <RouterProvider router={router}></RouterProvider>
+            </UpdateDeleteValidityProvider>
           </AssignmentStatusProvider>
         </LogoutProvider>
       </LoginRegistratonProvider>
