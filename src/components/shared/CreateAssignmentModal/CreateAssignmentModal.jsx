@@ -28,9 +28,9 @@ import { apiBaseURL } from "../../../nativeData/apiBase";
 
 const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
   // form element css classes
-  const labelClasses = "block mb-2 text-lg";
+  const labelClasses = "block mb-2 text-sm lg:text-lg";
   const inputClasses =
-    "block rounded-default !w-full p-2 font-inherit bg-gray-300";
+    "block rounded-default !w-full text-sm lg:text-base p-1 md:p-2 font-inherit bg-gray-300";
 
   // navigate method
   const navigate = useNavigate();
@@ -133,7 +133,7 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
       <div
         className={`${
           open ? "scale-100" : "scale-0"
-        } origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 bg-white z-40 rounded-default max-w-[50%] w-full duration-200`}
+        } origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 bg-white z-40 lg:rounded-default w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] duration-200`}
       >
         {/* close button */}
         <button className="block w-max ml-auto" onClick={closeFunction}>
@@ -141,7 +141,7 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
         </button>
 
         {/*  heading */}
-        <SectionHeading text={"Create Assignment"} modifyClasses="mb-4" />
+        <SectionHeading text={"Create Assignment"} modifyClasses=" mb-4" />
 
         {/* form starts here */}
         <form onSubmit={handleCreateAssignment} className="block space-y-4">
@@ -156,13 +156,13 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
             <label className={labelClasses}>Description</label>
             <textarea
               name="description"
-              className={`${inputClasses} h-20`}
+              className={`${inputClasses} h-12 md:h-20`}
               required
             ></textarea>
           </div>
 
           {/* total marks and thumbnail image field */}
-          <div className="grid grid-cols-[1fr_2fr] gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-4">
             {/* total marks */}
             <div>
               <label className={labelClasses}>Total Marks</label>
@@ -187,12 +187,12 @@ const CreateAssignmentModal = ({ open = false, closeFunction = null }) => {
           </div>
 
           {/* difficulty and date */}
-          <div className="grid grid-cols-2 gap-4 items-stretch mb-10">
+          <div className="grid grid-cols-1 xsm:grid-cols-2 gap-4 items-stretch mb-10">
             {/* difficulty */}
             <div>
               <label className={labelClasses}>Difficulty</label>
               <select
-                className={`block w-full rounded-default p-[10px] bg-gray-300`}
+                className={`block w-full text-sm lg:text-base rounded-default p-[5px] md:p-[8.5px] lg:p-[10px] bg-gray-300`}
                 name="difficulty"
               >
                 <option value="easy">Easy</option>

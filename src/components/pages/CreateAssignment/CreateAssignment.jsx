@@ -45,8 +45,11 @@ const CreateAssignment = () => {
       <InnerContainer>
         <section>
           {/* section heading and details */}
-          <SectionHeading text={"Welcome"} modifyClasses="text-4xl mb-6" />
-          <p className="text-center text-2xl mb-10">
+          <SectionHeading
+            text={"Welcome"}
+            modifyClasses="md:text-3xl lg:text-4xl mb-6"
+          />
+          <p className="text-center text-lg sm:text-xl lg:text-2xl mb-10">
             You can create your assignments here.
           </p>
 

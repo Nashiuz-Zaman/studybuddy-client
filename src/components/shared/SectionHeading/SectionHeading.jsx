@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SectionHeading = ({ text, modifyClasses = "" }) => {
   return (
     <h2
-      className={`text-3xl text-primary text-center font-bold ${modifyClasses}`}
+      className={`text-xl lg:text-3xl text-primary text-center font-bold ${modifyClasses}`}
     >
       {text}
     </h2>
