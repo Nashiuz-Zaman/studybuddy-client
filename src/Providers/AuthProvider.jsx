@@ -31,9 +31,11 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   // user state
   const [user, setUser] = useState(null);
+
   // app loading state
   const [appLoading, setAppLoading] = useState(true);
 
+  // take delete cookie method from this hook
   const { deleteCookie } = useControlCookie();
 
   // login with google function
@@ -87,6 +89,11 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  // check if user should be logged in by verifying the token
+  const checkIfUserIsLoggedIn = () => {
+    console.log(user);
+  };
+
   // pass all the necessary things to the context provider through an object
   const authObj = {
     user,
@@ -99,6 +106,7 @@ const AuthProvider = ({ children }) => {
     login,
     updateUserProfile,
     loginGoogle,
+    checkIfUserIsLoggedIn,
   };
 
   return (
