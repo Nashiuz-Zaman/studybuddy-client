@@ -10,6 +10,9 @@ import Login from "../components/pages/Login/Login";
 import Registration from "./../components/pages/Registration/Registration";
 import CreateAssignment from "../components/pages/CreateAssignment/CreateAssignment";
 
+// route component
+import PrivateRoute from "../components/route/PrivateRoute/PrivateRoute";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,7 +21,14 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Registration /> },
-      { path: "/create-assignments", element: <CreateAssignment /> },
+      {
+        path: "/create-assignments",
+        element: (
+          <PrivateRoute>
+            <CreateAssignment />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
