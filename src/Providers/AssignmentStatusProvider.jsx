@@ -13,11 +13,16 @@ const AssignmentStatusProvider = ({ children }) => {
   // update state
   const [updateSuccessful, setUpdateSuccessful] = useState(false);
 
+  // delete state
+  const [deleteSuccessful, setDeleteSuccessful] = useState(false);
+
   const assignmentStatusObj = {
     assignmentCreationSuccessful,
     setAssignmentCreationSuccessful,
     updateSuccessful,
     setUpdateSuccessful,
+    deleteSuccessful,
+    setDeleteSuccessful,
   };
 
   return (

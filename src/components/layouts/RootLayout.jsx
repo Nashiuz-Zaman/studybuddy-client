@@ -7,6 +7,7 @@ import LogoutToast from "../shared/LogoutToast/LogoutToast";
 import CreationSuccessModal from "../shared/CreationSuccessModal/CreationSuccessModal";
 import UpdateDeleteDeniedModal from "../shared/UpdateDeleteDeniedModal/UpdateDeleteDeniedModal";
 import UpdateSuccessModal from "../shared/UpdateSuccessModal/UpdateSuccessModal";
+import DeleteSuccessModal from "../shared/DeleteSuccessModal/DeleteSuccessModal";
 
 // custom hook
 import useScrollToTop from "./../../hooks/useScrollToTop";
@@ -29,6 +30,7 @@ function RootLayout() {
       <CreationSuccessModal />
       <UpdateDeleteDeniedModal />
       <UpdateSuccessModal />
+      <DeleteSuccessModal />
 
       {/* page component will replace outlet */}
       <Outlet />

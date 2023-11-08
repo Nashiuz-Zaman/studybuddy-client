@@ -14,11 +14,12 @@ import useAuthProvider from "./../../../hooks/useAuthProvider";
 import useFetch from "./../../../hooks/useFetch";
 import useLogoutProvider from "./../../../hooks/useLogoutProvider";
 import useUpdateDeleteValidityProvider from "../../../hooks/useUpdateDeleteValidityProvider";
+import useAssignmentStatusProvider from "../../../hooks/useAssignmentStatusProvider";
 
 // data
 import { apiBaseURL } from "../../../nativeData/apiBase";
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment, shouldUpdateFunction }) => {
   // extract assignment properties
   const { _id, thumbnail, title, totalMarks, difficulty, email } = assignment;
 
@@ -31,13 +32,16 @@ const AssignmentCard = ({ assignment }) => {
   // take the method that can enable state to show wrong update/delete modal, where the user is requesting to update/delete other people's assignments
   const { setUpdateDeleteInvalid } = useUpdateDeleteValidityProvider();
 
+  // method for show/hide delete success modal
+  const { setDeleteSuccessful } = useAssignmentStatusProvider();
+
   //  post method from useFetch hook
-  const { postData } = useFetch();
+  const { postData, deleteData } = useFetch();
 
   // create the navigate method
   const navigate = useNavigate();
 
-  // update verification functionality
+  // check if user has the permission to update assignment
   const checkIfCanUpdate = () => {
     // step 1 find out user auth status
     const userLoggedIn = checkIfUserIsLoggedIn();
@@ -51,7 +55,7 @@ const AssignmentCard = ({ assignment }) => {
     // api end point to send this check request to
     const url = `${apiBaseURL}/assignments/can-update`;
 
-    // also pass in the assignment id (to chek which assignment we are trying to update in the server side)
+    // also pass in the assignment email (to check if the user has permission to update current assignment in the server side)
     postData(url, { email }).then((data) => {
       // if token doesn't exist or wrong token logout and navigate to homepage
       if (data.noToken === true || data.badToken === true) {
@@ -83,6 +87,74 @@ const AssignmentCard = ({ assignment }) => {
       // if server gives permission take the user to the update assignment page
       if (data.canProceed === true) {
         navigate(`/assignments/${_id}/update`);
+      }
+    });
+  };
+
+  // check if user has the permission to delete assignment
+  const checkIfCanDelete = () => {
+    // step 1 find out user auth status
+    const userLoggedIn = checkIfUserIsLoggedIn();
+
+    // step 2 if no user in auth redirect to login page
+    if (!userLoggedIn) {
+      navigate("/login");
+      return;
+    }
+
+    // api end point to send this check request to
+    const url = `${apiBaseURL}/assignments/can-delete`;
+
+    // also pass in the assignment email (to check if the user has permission to update current assignment in the server side)
+    postData(url, { email }).then((data) => {
+      // if token doesn't exist or wrong token logout and navigate to homepage
+      if (data.noToken === true || data.badToken === true) {
+        logout().then(() => {
+          // show the logout toast
+          setLogoutToastOpen(true);
+
+          const timer = setTimeout(() => {
+            // hide the logout toast
+            setLogoutToastOpen(false);
+
+            // navigate to login page
+            navigate("/login");
+
+            // clear timeout
+            clearTimeout(timer);
+          }, 2100);
+
+          return;
+        });
+      }
+
+      // if wrong user is detected which means the user is trying to delete other's assignment
+      if (data.wrongUser === true) {
+        setUpdateDeleteInvalid(true);
+        return;
+      }
+
+      // if server gives permission delete the assignment
+      if (data.canProceed === true) {
+        // send delete request to delete the assignment
+        const url = `${apiBaseURL}/assignments/${_id}/delete`;
+
+        deleteData(url)
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              // if delete successful then show delete successful modal
+              setDeleteSuccessful(true);
+
+              const timer = setTimeout(() => {
+                setDeleteSuccessful(false);
+                shouldUpdateFunction(true);
+                clearTimeout(timer);
+              }, 1500);
+            }
+          })
+          .catch((err) => {
+            console.error(err.message);
+          });
       }
     });
   };
@@ -129,7 +201,7 @@ const AssignmentCard = ({ assignment }) => {
 
           {/* delete btn */}
           <AssignmentDeleteBtn
-            onClickFunction={null}
+            onClickFunction={checkIfCanDelete}
             modifyClasses="w-max mx-auto"
           />
         </div>
@@ -140,6 +212,7 @@ const AssignmentCard = ({ assignment }) => {
 
 AssignmentCard.propTypes = {
   assignment: PropTypes.object,
+  shouldUpdateFunction: PropTypes.func,
 };
 
 export default AssignmentCard;

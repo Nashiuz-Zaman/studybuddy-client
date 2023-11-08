@@ -14,8 +14,12 @@ const LogoutToast = () => {
       <IoCloseCircle className="text-red-600 text-5xl" />
 
       <div className="text-center">
-        <p className="text-red-600 font-semibold">Sorry you were logged out</p>
-        <p className="text-red-600 font-semibold">Please Login again</p>
+        <p className="text-red-600 font-semibold text-lg md:text-xl">
+          Sorry you were logged out
+        </p>
+        <p className="text-red-600 font-semibold text-lg md:text-xl">
+          Please Login again
+        </p>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 import { useCallback } from "react";
 
 const useFetch = () => {
+  //  post or create data
   const postData = useCallback((url, data) => {
     return fetch(url, {
       method: "POST",
@@ -18,6 +19,7 @@ const useFetch = () => {
       });
   }, []);
 
+  // put or update data
   const putData = useCallback((url, data) => {
     return fetch(url, {
       method: "PUT",
@@ -34,7 +36,19 @@ const useFetch = () => {
       });
   }, []);
 
-  return { postData, putData };
+  // delete data
+  const deleteData = useCallback((url) => {
+    return fetch(url, {
+      method: "DELETE",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      });
+  }, []);
+
+  return { postData, putData, deleteData };
 };
 
 export default useFetch;

@@ -15,7 +15,12 @@ import useFetch from "../../../hooks/useFetch";
 import { apiBaseURL } from "../../../nativeData/apiBase";
 
 const AllAssignments = () => {
+  // assignments
   const [assignments, setAssignments] = useState([]);
+
+  // state for refetch
+  const [shouldUpdate, setShouldUpdate] = useState(false);
+
   //  assignment difficulty step
   const [difficulty, setDifficulty] = useState("all");
   // take the post method from this hook
@@ -30,7 +35,7 @@ const AllAssignments = () => {
     postData(url, filter).then((data) => {
       setAssignments(data);
     });
-  }, [difficulty, postData]);
+  }, [difficulty, postData, shouldUpdate]);
 
   return (
     <div className="mb-sectionGapLg">
@@ -82,7 +87,10 @@ const AllAssignments = () => {
               {assignments.map((assignment) => {
                 return (
                   <li key={assignment._id}>
-                    <AssignmentCard assignment={assignment} />
+                    <AssignmentCard
+                      assignment={assignment}
+                      shouldUpdateFunction={setShouldUpdate}
+                    />
                   </li>
                 );
               })}
