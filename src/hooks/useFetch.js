@@ -1,5 +1,8 @@
-const useFetchPost = () => {
-  const postData = (url, data) => {
+// react
+import { useCallback } from "react";
+
+const useFetch = () => {
+  const postData = useCallback((url, data) => {
     return fetch(url, {
       method: "POST",
       credentials: "include",
@@ -13,9 +16,9 @@ const useFetchPost = () => {
       .then((data) => {
         return data;
       });
-  };
+  }, []);
 
   return { postData };
 };
 
-export default useFetchPost;
+export default useFetch;
