@@ -13,6 +13,7 @@ import AllAssignments from "../components/pages/AllAssignments/AllAssignments";
 import ErrorPage from "../components/pages/ErrorPage/ErrorPage";
 import UpdateAssignment from "../components/pages/UpdateAssignment/UpdateAssignment";
 import ViewAssignment from "../components/pages/ViewAssignment/ViewAssignment";
+import SubmittedAssignments from "../components/pages/SubmittedAssignments/SubmittedAssignments";
 
 // route component
 import PrivateRoute from "../components/route/PrivateRoute/PrivateRoute";
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
         loader: ({ params }) => {
           return fetch(`${apiBaseURL}/assignments/${params.id}`);
         },
+      },
+      {
+        path: "/submitted-assignments",
+        element: (
+          <PrivateRoute>
+            <SubmittedAssignments />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/create-assignments",
