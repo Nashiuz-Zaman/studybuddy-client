@@ -188,7 +188,7 @@ const AssignmentCard = ({ assignment, shouldUpdateFunction }) => {
         <div className="flex flex-col items-center gap-3">
           <LinkBtn
             text="View Assignment"
-            url={`/assignments/${_id}`}
+            url={`/assignments/${_id}/view`}
             modifyClasses="w-full"
           />
           {/* update btn */}
