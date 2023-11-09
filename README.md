@@ -11,3 +11,7 @@
 - The FAQ section in home page contains some frequently asked questions and answers about the app
 - The features section in home page contains all the features that this web app provides
 - There is a public all assignments page, where all the assignments created by all the users are visible so that an user can take those assignments to work with.
+
+# live link
+
+https://studdybuddy-b3371.web.app/
