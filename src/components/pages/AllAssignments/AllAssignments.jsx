@@ -33,6 +33,7 @@ const AllAssignments = () => {
 
     // retreive data based on difficulty
     postData(url, filter).then((data) => {
+      setShouldUpdate(false);
       setAssignments(data);
     });
   }, [difficulty, postData, shouldUpdate]);
