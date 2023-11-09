@@ -1,6 +1,5 @@
 // react router dom
 import { useState, useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
 
 // containers
 import InnerContainer from "./../../containers/InnerContainer/InnerContainer";
@@ -13,13 +12,14 @@ import { apiBaseURL } from "../../../nativeData/apiBase";
 import SubmittedAssignmentCard from "../../shared/SubmittedAssignmentCard/SubmittedAssignmentCard";
 
 const SubmittedAssignments = () => {
-  // const submittedAssignments = useLoaderData();
-  // console.log(submittedAssignments);
   const [pendingAssignments, setPendingAssignments] = useState([]);
   const [shouldUpdate, setShouldUpdate] = useState(false);
 
+  // fetch to load submitted assignments data
   useEffect(() => {
-    fetch(`${apiBaseURL}/submitted-assignments`, { credentials: "include" })
+    fetch(`${apiBaseURL}/submitted-assignments/pending`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setShouldUpdate(false);
@@ -36,7 +36,7 @@ const SubmittedAssignments = () => {
     <div className="mb-sectionGapLg">
       <InnerContainer>
         {/* top part  */}
-        <section>
+        <section className="mb-6 md:mb-16">
           {/* heading */}
           <SectionHeading
             text={"Welcome"}
@@ -44,7 +44,7 @@ const SubmittedAssignments = () => {
           />
 
           {/* normal description */}
-          <p className="text-center text-base sm:text-xl lg:text-2xl mb-6 md:mb-10">
+          <p className="text-center text-base sm:text-xl lg:text-2xl">
             In this page you will find all the pending submitted assignments.
           </p>
         </section>

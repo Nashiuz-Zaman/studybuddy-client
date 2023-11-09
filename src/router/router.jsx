@@ -14,6 +14,7 @@ import ErrorPage from "../components/pages/ErrorPage/ErrorPage";
 import UpdateAssignment from "../components/pages/UpdateAssignment/UpdateAssignment";
 import ViewAssignment from "../components/pages/ViewAssignment/ViewAssignment";
 import SubmittedAssignments from "../components/pages/SubmittedAssignments/SubmittedAssignments";
+import MyAssignments from "../components/pages/MyAssignments/MyAssignments";
 
 // route component
 import PrivateRoute from "../components/route/PrivateRoute/PrivateRoute";
@@ -41,6 +42,14 @@ const router = createBrowserRouter([
         loader: ({ params }) => {
           return fetch(`${apiBaseURL}/assignments/${params.id}`);
         },
+      },
+      {
+        path: "/my-assignments",
+        element: (
+          <PrivateRoute>
+            <MyAssignments />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/assignments/:id/view",

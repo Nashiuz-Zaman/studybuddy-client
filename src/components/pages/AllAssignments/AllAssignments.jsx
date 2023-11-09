@@ -17,6 +17,7 @@ import { apiBaseURL } from "../../../nativeData/apiBase";
 const AllAssignments = () => {
   // assignments
   const [assignments, setAssignments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // state for refetch
   const [shouldUpdate, setShouldUpdate] = useState(false);
@@ -27,6 +28,7 @@ const AllAssignments = () => {
   const { postData } = useFetch();
 
   useEffect(() => {
+    setLoading(true);
     const url = `${apiBaseURL}/assignments`;
     // create the filter for the database query here in client side
     const filter = { difficulty };
@@ -35,6 +37,7 @@ const AllAssignments = () => {
     postData(url, filter).then((data) => {
       setShouldUpdate(false);
       setAssignments(data);
+      setLoading(false);
     });
   }, [difficulty, postData, shouldUpdate]);
 
@@ -76,14 +79,14 @@ const AllAssignments = () => {
         {/* Assignments */}
         <section>
           {/* if there is no assignment in the array */}
-          {!assignments.length && (
+          {!loading && !assignments.length && (
             <p className="text-center text-primary text-lg md:text-2xl">
               Sorry, currently there are no assignments!
             </p>
           )}
 
           {/* if assignment found */}
-          {assignments.length > 0 && (
+          {!loading && assignments.length > 0 && (
             <ul className="grid grid-cols-1 sm:grid-cols-2 2md:grid-cols-3 xl:grid-cols-4 gap-8">
               {assignments.map((assignment) => {
                 return (
