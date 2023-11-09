@@ -30,8 +30,6 @@ const SubmittedAssignments = () => {
       });
   }, [shouldUpdate]);
 
-  console.log(pendingAssignments);
-
   return (
     <div className="mb-sectionGapLg">
       <InnerContainer>
@@ -57,7 +55,10 @@ const SubmittedAssignments = () => {
               pendingAssignments.map((assignment) => {
                 return (
                   <li key={assignment._id}>
-                    <SubmittedAssignmentCard submittedAssignment={assignment} />
+                    <SubmittedAssignmentCard
+                      shouldUpdateFunction={setShouldUpdate}
+                      submittedAssignment={assignment}
+                    />
                   </li>
                 );
               })}

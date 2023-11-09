@@ -1,9 +1,26 @@
 // react
 import PropTypes from "prop-types";
-import ButtonBtn from "../ButtonBtn/ButtonBtn";
+import { useState } from "react";
 
-const SubmittedAssignmentCard = ({ submittedAssignment }) => {
+// shared component
+import ButtonBtn from "../ButtonBtn/ButtonBtn";
+import GiveMarksModal from "../GiveMarksModal/GiveMarksModal";
+
+const SubmittedAssignmentCard = ({
+  submittedAssignment,
+  shouldUpdateFunction,
+}) => {
   const { title, examineeName, totalMarks } = submittedAssignment;
+  const [giveMarksModalOpen, setGiveMarksModalOpen] = useState(false);
+
+  // declare funcs to open/hide give marks modal
+  const openGiveMarksModal = () => {
+    setGiveMarksModalOpen(true);
+  };
+
+  const closeGiveMarksModal = () => {
+    setGiveMarksModalOpen(false);
+  };
 
   return (
     <div className="p-8 shadow-[0_0_10px_rgba(0,0,0,0.2)] rounded-default">
@@ -23,15 +40,28 @@ const SubmittedAssignmentCard = ({ submittedAssignment }) => {
 
         {/* give marks button */}
         <div>
-          <ButtonBtn text="Give Marks" modifyClasses="w-full" />
+          <ButtonBtn
+            onClickFunction={openGiveMarksModal}
+            text="Give Marks"
+            modifyClasses="w-full"
+          />
         </div>
       </div>
+
+      {/* Give marks modal and its states passed */}
+      <GiveMarksModal
+        shouldUpdateFunction={shouldUpdateFunction}
+        open={giveMarksModalOpen}
+        closeFunction={closeGiveMarksModal}
+        assignmentToBeEvaluated={submittedAssignment}
+      />
     </div>
   );
 };
 
 SubmittedAssignmentCard.propTypes = {
   submittedAssignment: PropTypes.object,
+  shouldUpdateFunction: PropTypes.func,
 };
 
 export default SubmittedAssignmentCard;

@@ -35,7 +35,7 @@ const SubmitAssignmentModal = ({
   // navigate method
   const navigate = useNavigate();
 
-  // take the id of the assignment that is submitted
+  // take data of assignment that is submitted
   const { _id, title, totalMarks } = assignmentTobeSubmitted;
 
   // handle submission
