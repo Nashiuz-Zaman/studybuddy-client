@@ -15,6 +15,7 @@ import UpdateAssignment from "../components/pages/UpdateAssignment/UpdateAssignm
 import ViewAssignment from "../components/pages/ViewAssignment/ViewAssignment";
 import SubmittedAssignments from "../components/pages/SubmittedAssignments/SubmittedAssignments";
 import MyAssignments from "../components/pages/MyAssignments/MyAssignments";
+import UnderDevelopment from "./../components/pages/UnderDevelopment/UnderDevelopment";
 
 // route component
 import PrivateRoute from "../components/route/PrivateRoute/PrivateRoute";
@@ -29,8 +30,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Registration /> },
+      { path: "/login", element: <UnderDevelopment /> },
+      { path: "/register", element: <UnderDevelopment /> },
       { path: "/assignments", element: <AllAssignments /> },
       {
         path: "/assignments/:id/update",
